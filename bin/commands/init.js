@@ -8,8 +8,6 @@ const logger = require('../logger');
 const config = require('../_config');
 const clear = require('clear');
 
-const env_develop = process.env.NODE_ENV === 'development';
-
 const init = () => {
   // logger.debugStatus('init start');
 
