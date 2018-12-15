@@ -5,6 +5,7 @@ require('dotenv').load();
 const chalk = require('chalk');
 const meow = require('meow');
 const command = require('./command');
+const config = require('./_config');
 // const log = require('./logger');
 
 // log.debugStatus('test started');
@@ -13,28 +14,28 @@ const cli = meow(
   chalk`
     {yellow Initialize a new site:}
 
-      {cyan $ html-template init}
+      {cyan $ noie init}
 
-    {yellow Start the current site:}
+    {yellow Serve the current site:}
 
-      {cyan $ html-template start [options]}
+      {cyan $ noie serve [options]}
 
     {yellow Build the current site:}
 
-      {cyan $ html-template build [options]}
+      {cyan $ noie build [options]}
 
     {underline {yellow Options}}
       {cyan -c, --config <file-path>}  Path to the config file (default: site.config.js)
       {cyan -p, --port <port-number>}  Port to use for local server (default: 3000)
       
       {cyan -h, --help}                Display this help text
-      {cyan -v, --version}             Display html-template version
+      {cyan -v, --version}             Display noie version
   `,
   {
     flags: {
       config: {
         type: 'string',
-        default: 'site.config.js',
+        default: config.config,
         alias: 'c'
       },
       port: {
