@@ -4,13 +4,12 @@
   "description": "",
   "main": "site.config.js",
   "scripts": {
-    "start": "html-template start",
-    "build": "html-template build"
+    "build": "noie build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@lichingchester/html-template": "^1.0.2"
+    "@lichingchester/noie": "^1.0.1"
   }
 }
