@@ -36,7 +36,7 @@ const init = () => {
 
     logger.success(`Initialized successfully!`);
     logger.info(config.message.initSuccess);
-  })
+  });
 
   // logger.debugStatus('init end');
 }

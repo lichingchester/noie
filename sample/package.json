@@ -1,7 +1,6 @@
 {
   "name": "sample",
   "version": "1.0.0",
-  "description": "",
   "main": "site.config.js",
   "scripts": {
     "build": "noie build"
@@ -11,5 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@lichingchester/noie": "^1.0.1"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }

@@ -13,22 +13,22 @@ const cli = meow(
   chalk`
     {yellow Initialize a new site:}
 
-      {cyan $ html-template init}
+      {cyan $ noie init}
 
     {yellow Start the current site:}
 
-      {cyan $ html-template start [options]}
+      {cyan $ noie start [options]}
 
     {yellow Build the current site:}
 
-      {cyan $ html-template build [options]}
+      {cyan $ noie build [options]}
 
     {underline {yellow Options}}
       {cyan -c, --config <file-path>}  Path to the config file (default: site.config.js)
       {cyan -p, --port <port-number>}  Port to use for local server (default: 3000)
       
       {cyan -h, --help}                Display this help text
-      {cyan -v, --version}             Display html-template version
+      {cyan -v, --version}             Display noie version
   `,
   {
     flags: {
