@@ -8,26 +8,28 @@ const template = require('./commands/index');
 const command = (input = [], flags = {}) => {  
   const command = input.length > 0 ? input[0] : null;
 
-  if(! fse.existsSync(path.resolve(flags.config))){
-    logger.error('\nConfig file not found\n');
-    return;
-  }
-
-  const config = flags.config ? require(path.resolve(flags.config)) : {};
-
   switch(command){
     case 'init':
       template.init();
       break;
     case 'serve':
-      template.serve(config, flags);
-     break;
+      template.serve(setConfig(flags), flags);
+      break;
     case 'build':
       template.build();
-     break;
+      break;
     default:
       logger.error('Invalid command');
   }
+};
+
+const setConfig = flags => {
+  if(! fse.existsSync(path.resolve(flags.config))){
+    logger.error('\nConfig file not found\n');
+    return;
+  }
+
+  return flags.config ? require(path.resolve(flags.config)) : {}
 };
 
 module.exports = command;
