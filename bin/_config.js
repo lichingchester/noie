@@ -6,7 +6,7 @@ const env_develop = process.env.NODE_ENV === 'development';
 
 const config = {
   name: "noie",
-  config: env_develop ? './sample/site.config.js' : 'site.config.js',
+  config: env_develop ? './sample/site.config.js' : './site.config.js',
 
   command: {
     output: env_develop ? './sample' : '.',
@@ -17,7 +17,7 @@ const config = {
 
   message: {
     initSuccess: chalk`\nNow you can run:
-    {cyan npm start}      to start your new site, or
+    {cyan npm run serve}  to serve your new site, or
     {cyan npm run build}  to build it into the 'public' folder.\n`
   },
 
