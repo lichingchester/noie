@@ -21,7 +21,7 @@ const init = () => {
   // create package.json with scripts
   const packageJSON = require(path.relative(__dirname, config.command.packageJsonOutput));
   packageJSON.scripts = {
-    // start: `${config.name} start`,
+    serve: `${config.name} serve`,
     build: `${config.name} build`
   };
   fse.writeFileSync(config.command.packageJsonOutput, JSON.stringify(packageJSON, null, 2));

@@ -6,6 +6,7 @@ const env_develop = process.env.NODE_ENV === 'development';
 
 const config = {
   name: "noie",
+  config: env_develop ? './sample/site.config.js' : 'site.config.js',
 
   command: {
     output: env_develop ? './sample' : '.',

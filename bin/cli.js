@@ -5,6 +5,7 @@ require('dotenv').load();
 const chalk = require('chalk');
 const meow = require('meow');
 const command = require('./command');
+const config = require('./_config');
 // const log = require('./logger');
 
 // log.debugStatus('test started');
@@ -15,9 +16,9 @@ const cli = meow(
 
       {cyan $ noie init}
 
-    {yellow Start the current site:}
+    {yellow Serve the current site:}
 
-      {cyan $ noie start [options]}
+      {cyan $ noie serve [options]}
 
     {yellow Build the current site:}
 
@@ -34,7 +35,7 @@ const cli = meow(
     flags: {
       config: {
         type: 'string',
-        default: 'site.config.js',
+        default: config.config,
         alias: 'c'
       },
       port: {

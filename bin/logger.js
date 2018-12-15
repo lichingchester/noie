@@ -9,6 +9,7 @@ const log = console.log;
 
 module.exports.info = (msg) => log(chalk.blue(msg));
 module.exports.success = (msg) => log(chalk.green(msg));
+module.exports.error = (msg) => log(chalk.red(msg));
 
 module.exports.debugStatus = (msg) => log(chalk.bold.dim.white(`Debug Status: ${msg}`));
 module.exports.debug = (msg) => log(chalk.bold.black.bgWhiteBright(`Debug: ${convertor(msg)}`));

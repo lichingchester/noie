@@ -1,21 +1,32 @@
 'use strict';
 
+const path = require('path');
+const fse = require('fs-extra');
+const logger = require('./logger');
 const template = require('./commands/index');
 
-const command = (input = []) => {
+const command = (input = [], flags = {}) => {  
   const command = input.length > 0 ? input[0] : null;
+
+  if(! fse.existsSync(path.resolve(flags.config))){
+    logger.error('\nConfig file not found\n');
+    return;
+  }
+
+  const config = flags.config ? require(path.resolve(flags.config)) : {};
+
   switch(command){
     case 'init':
       template.init();
       break;
-    case 'start':
-    //  log.debugStatus('start');
+    case 'serve':
+      template.serve(config, flags);
      break;
     case 'build':
       template.build();
      break;
     default:
-      // log.debugStatus('Invalid command');
+      logger.error('Invalid command');
   }
 };
 
