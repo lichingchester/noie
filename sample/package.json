@@ -1,0 +1,16 @@
+{
+  "name": "sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "site.config.js",
+  "scripts": {
+    "start": "html-template start",
+    "build": "html-template build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@lichingchester/html-template": "^1.0.2"
+  }
+}
