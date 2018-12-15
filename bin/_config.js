@@ -17,7 +17,7 @@ const config = {
 
   message: {
     initSuccess: chalk`\nNow you can run:
-    {cyan npm start}      to start your new site, or
+    {cyan npm run serve}  to serve your new site, or
     {cyan npm run build}  to build it into the 'public' folder.\n`
   },
 
