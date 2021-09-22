@@ -1,0 +1,44 @@
+// example
+
+header {
+  opacity: 0;
+  transition: 1s cubic-bezier(0.22, 1, 0.36, 1);
+
+  @include media-breakpoint-up(lg) {
+    transform: translateY(-20px);
+  }
+}
+
+section.page-landing {
+  opacity: 0;
+  transition: 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+}
+
+section.page-main {
+  transform: translateY(100px);
+  opacity: 0;
+  transition: 1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
+}
+
+footer {
+  opacity: 0;
+  transition: 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.loaded {
+  header {
+    opacity: 1;
+
+    @include media-breakpoint-up(lg) {
+      transform: translateY(0);
+    }
+  }
+
+  section.page-landing,
+  section.page-main,
+  main,
+  footer {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

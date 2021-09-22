@@ -1,0 +1,16 @@
+[
+  {
+    "name": "About Us",
+    "link": "/about-us"
+  },
+  {
+    "name": "Our Business",
+    "link": "/our-business",
+    "menu": [
+      {
+        "name": "Milestone",
+        "link": "/milestone"
+      }
+    ]
+  }
+]
