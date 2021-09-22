@@ -1,3 +1,7 @@
 {
-  "editor.tabSize": 2
+  "liveServer.settings.root": "/dist",
+  "search.exclude": {
+    "**/dist": true
+  },
+  "editor.formatOnSave": true
 }

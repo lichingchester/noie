@@ -1,0 +1,8 @@
+[
+  { "name": "slide 1", "content": "slide content 1" },
+  {
+    "name": "slide 2",
+    "content": "slide content 2"
+  },
+  { "name": "slide 3", "content": "slide content 3" }
+]

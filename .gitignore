@@ -1,2 +1,8 @@
-.env
-sample
+# Add any directories, files, or patterns you don't want to be tracked by version control
+.git
+node_modules
+dist
+
+# Mac OSX
+.DS_Store
+*.DS_Store
