@@ -36,23 +36,43 @@ bodyClass: components
     <h1 class="display-4">Component Document</h1>
     <hr />
 
-    <!-- Button Card -->
+    <h4>Data Handling</h4>
+    <p>
+      <code>data.menu[0].name</code>
+      <!--  -->
+      <%- data.menu[0].name %>
+    </p>
+
+    <!-- <hr />
+
+    <h4>Typography</h4>
+    <p>
+      <h1>h1</h1>
+      <p>body</p>
+    </p> -->
+
+    <hr />
+
+    <!-- Slider -->
     <a
-      id="Button Card"
-      href="#Button Card"
+      id="Slider"
+      href="#Slider"
       class="component-title-link h2 lead font-weight-light"
-      >Button Card</a
     >
+      Slider
+    </a>
 
     <code>#code start</code>
     <!-- code start -->
-    <%# include('../components/cards/button-card', {title: "香港建築師學會",
-    link: "#"}) %>
+    <!--  -->
+    <%- include('../components/sliders/slider', {data: data.slider}) %>
     <!-- code end -->
     <code>#code end</code>
     <!-- Button Card -->
 
     <hr />
+
+    <!-- TODO: Delete below components and create your own -->
 
     <!-- Red Card -->
     <a

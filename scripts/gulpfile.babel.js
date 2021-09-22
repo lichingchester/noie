@@ -29,6 +29,9 @@ const SOURCE = {
   // app.scss will import all other scss files
   scss: "../src/assets/scss/app.scss",
 
+  // all html
+  html: "../dist/*.html",
+
   // all downloaded modules such as bootstrap, jquery, etc.
   vendor: {
     css: "../src/assets/modules/**/*.css",
@@ -48,6 +51,7 @@ const SOURCE = {
     js: "../src/assets/js/*.js",
     bundle: "../src/assets/modules/**/*.@(css|js)",
     assets: "../src/web",
+    data: "../data/*.json",
   },
 };
 
@@ -93,7 +97,7 @@ const sass = () => {
         outputStyle: "expanded",
       })
     )
-    .pipe($.postcss([autoprefixer()]))
+    .pipe($.postcss([autoprefixer(), require("postcss-easings")]))
     .pipe(gulp.dest(DEST.css))
     .pipe($.cleanCss())
     .pipe($.rename({ extname: ".min.css" }))
@@ -106,7 +110,14 @@ const sass = () => {
  * bundle css file
  */
 const bundleCSS = () => {
-  return gulp.src(SOURCE.vendor.css).pipe($.plumber()).pipe($.sourcemaps.init()).pipe($.concat("bundle.min.css")).pipe($.sourcemaps.write(".")).pipe(gulp.dest(DEST.vendor)).pipe(browserSync.stream());
+  return gulp
+    .src(SOURCE.vendor.css)
+    .pipe($.plumber())
+    .pipe($.sourcemaps.init())
+    .pipe($.concat("bundle.min.css"))
+    .pipe($.sourcemaps.write("."))
+    .pipe(gulp.dest(DEST.vendor))
+    .pipe(browserSync.stream());
 };
 
 /**
@@ -145,7 +156,9 @@ const bundleJS = () => {
     .src(SOURCE.vendor.js)
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
-    .pipe($.order(["jquery-*/**/*.js", "hammer-*/**/*.js", "bootstrap-*/**/*.js"]))
+    .pipe(
+      $.order(["jquery-*/**/*.js", "hammer-*/**/*.js", "bootstrap-*/**/*.js"])
+    )
     .pipe($.concat("bundle.min.js"))
     .pipe($.sourcemaps.write("."))
     .pipe(gulp.dest(DEST.vendor))
@@ -160,6 +173,21 @@ const html = (cb) => {
   ejs(isProd);
   reload();
   cb();
+};
+
+/**
+ * format html files
+ */
+const formatHTML = () => {
+  return gulp
+    .src(SOURCE.html)
+    .pipe($.plumber())
+    .pipe(
+      $.htmlBeautify({
+        indentSize: 4,
+      })
+    )
+    .pipe(gulp.dest(DEST.default));
 };
 
 /**
@@ -179,18 +207,41 @@ const browser = () => {
  */
 const watch = () => {
   gulp.watch(SOURCE.watch.html, gulp.series(cleanHTML, html));
-  gulp.watch(SOURCE.watch.scss, gulp.series(cleanCSS, sass));
-  gulp.watch(SOURCE.watch.js, gulp.series(cleanJS, babelJS));
-  gulp.watch(SOURCE.watch.bundle, gulp.series(cleanVendor, gulp.parallel(bundleCSS, bundleJS)));
-  gulp.watch(SOURCE.watch.assets, gulp.series(cleanAssets, assets));
+  gulp.watch(SOURCE.watch.scss, gulp.series(cleanCSS, sass, cleanHTML, html));
+  gulp.watch(SOURCE.watch.js, gulp.series(cleanJS, babelJS, cleanHTML, html));
+  gulp.watch(
+    SOURCE.watch.bundle,
+    gulp.series(
+      cleanVendor,
+      gulp.parallel(bundleCSS, bundleJS, cleanHTML, html)
+    )
+  );
+  gulp.watch(
+    SOURCE.watch.assets,
+    gulp.series(cleanAssets, assets, cleanHTML, html)
+  );
+  // gulp.watch(SOURCE.watch.data, gulp.series(cleanHTML, html));
 };
 
 /**
  * npm run dev tasks
  */
-exports.dev = gulp.series(gulp.series(clean, assets), gulp.parallel(html, sass, bundleCSS, babelJS, bundleJS), gulp.parallel(watch, browser));
+exports.dev = gulp.series(
+  gulp.series(clean, assets),
+  gulp.parallel(html, sass, bundleCSS, babelJS, bundleJS),
+  gulp.parallel(watch, browser)
+);
 
 /**
  * npm run build tasks
  */
-exports.build = gulp.series(clean, assets, html, sass, bundleCSS, babelJS, bundleJS);
+exports.build = gulp.series(
+  clean,
+  assets,
+  html,
+  sass,
+  bundleCSS,
+  babelJS,
+  bundleJS,
+  formatHTML
+);
