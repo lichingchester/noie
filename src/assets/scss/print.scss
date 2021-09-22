@@ -1,0 +1,34 @@
+.print-only {
+  display: none;
+}
+
+@media print {
+  // global elements
+  // @page {
+  //   margin: 2mm;
+  // }
+
+  .print-only {
+    display: block;
+  }
+
+  img.print-only,
+  .print-only img {
+    max-width: 100%;
+  }
+
+  // swiper
+  .swiper-wrapper {
+    display: block;
+  }
+  .swiper-button-next,
+  .swiper-button-prev,
+  .swiper-pagination {
+    display: none;
+  }
+
+  // components
+
+  // pages
+  // homepage
+}

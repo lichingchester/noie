@@ -1,0 +1,97 @@
+html {
+  @include f-html();
+}
+
+body {
+  @include f-body();
+}
+
+h1,
+.h1 {
+  @include h1();
+}
+
+h2,
+.h2 {
+  @include h2();
+}
+
+h3,
+.h3 {
+  @include h3();
+}
+
+h4,
+.h4 {
+  @include h4();
+}
+
+h5,
+.h5 {
+  @include h5();
+}
+
+h6,
+.h6 {
+  @include h6();
+}
+
+.c1 {
+  @include c1();
+}
+
+.c2 {
+  @include c2();
+}
+
+.f-button {
+  @include f-button();
+}
+
+.skip-link {
+  position: absolute !important;
+  z-index: 1001;
+  max-height: 1920px;
+  display: inline-block;
+  padding: 15px;
+  margin: 5px;
+  outline: 3px solid red;
+  text-decoration: underline;
+  left: 20px;
+  top: 20px;
+  color: #fff;
+  background-color: red;
+}
+
+a {
+  // color: $color-link;
+  text-decoration: underline;
+
+  &.btn,
+  &.no-underline {
+    text-decoration: inherit;
+  }
+}
+@media (max-width: $md-max) {
+  :focus {
+    outline: 0;
+  }
+}
+
+a[href="javascript:;"] {
+  // color: $color-typography-black;
+  text-decoration: inherit;
+}
+
+a:not([href="javascript:;"]) {
+  word-break: break-all;
+}
+
+// swiper{
+// a11y handling
+.swiper-slide.wcag a {
+  display: none;
+}
+.swiper-slide.wcag.swiper-slide-active a {
+  display: inline-block;
+}
