@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+
+  <body class="<%= page.bodyClass %>">
+    <!-- Skip to content -->
+    <a
+      href="#skip-target"
+      title="Skip to main content"
+      class="skip-link sr-only sr-only-focusable"
+      onclick="document.getElementById('skip-target').focus();"
+    >
+      Skip to main content
+    </a>
+    <!-- Skip to content -->
+
+    <!-- header start -->
+    <%- include('../partials/header') %>
+    <!-- header end -->
+
+    <main>
+      <!-- Target for "skip to content" -->
+      <div id="skip-target" class="sr-only">The detail of this page</div>
+      <!-- Target for "skip to content" -->
+
+      <%- body %>
+    </main>
+
+    <%- include('../partials/footer') %>
+    <!--  -->
+    <%- include('../partials/modals') %>
+
+    <!--  -->
+    <% if (isProd) { %>
+    <script src="<%= site.basePath %>/web/js/app.min.js"></script>
+    <% } else { %>
+    <script src="<%= site.basePath %>/web/js/app.js"></script>
+    <% } %>
+  </body>
+</html>
