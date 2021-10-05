@@ -1,0 +1,60 @@
+{
+  "name": "@lichingchester/noie",
+  "version": "2.3.0",
+  "description": "Static HTML template generator",
+  "main": "site.config.js",
+  "engines": {
+    "node": "^12"
+  },
+  "scripts": {
+    "dev": "gulp dev --gulpfile ./scripts/gulpfile.babel.js",
+    "build": "gulp build --gulpfile ./scripts/gulpfile.babel.js --env production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lichingchester/noie.git"
+  },
+  "author": "lichingchester",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lichingchester/noie/issues"
+  },
+  "homepage": "https://github.com/lichingchester/noie#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "bootstrap-icons": "^1.5.0",
+    "gulp-front-matter": "^1.3.0",
+    "gulp-html-beautify": "^1.0.1",
+    "minimist": "^1.2.5",
+    "postcss": "^8.3.6",
+    "sass": "^1.26.8"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/register": "^7.10.5",
+    "autoprefixer": "^9.8.6",
+    "browser-sync": "^2.26.12",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-data": "^1.3.1",
+    "gulp-ejs": "^5.1.0",
+    "gulp-load-plugins": "^2.0.3",
+    "gulp-order": "^1.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "node-sass": "^4.14.1",
+    "nodemon": "^2.0.4",
+    "postcss-easings": "^3.0.1",
+    "require-all": "^3.0.0"
+  }
+}

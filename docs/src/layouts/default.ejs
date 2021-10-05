@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+
+  <body class="<%= page.bodyClass %>">
+    <div class="uk-container">
+      <!-- header start -->
+      <%- include('../partials/header') %>
+      <!-- header end -->
+
+      <main><%- body %></main>
+
+      <%- include('../partials/footer') %>
+    </div>
+
+    <!--  -->
+    <% if (isProd) { %>
+    <script src="<%= site.basePath %>/web/js/app.min.js"></script>
+    <% } else { %>
+    <script src="<%= site.basePath %>/web/js/app.js"></script>
+    <% } %>
+  </body>
+</html>

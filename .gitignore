@@ -2,6 +2,7 @@
 .git
 node_modules
 dist
+docs/node_modules
 
 # Mac OSX
 .DS_Store
