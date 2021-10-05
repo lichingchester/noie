@@ -10,7 +10,17 @@
       <%- include('../partials/header') %>
       <!-- header end -->
 
-      <main><%- body %></main>
+      <div class="body-grid">
+        <div class="body-grid__sidebar">
+          <!-- sidebar start -->
+          <%- include('../partials/sidebar') %>
+          <!-- sidebar end -->
+        </div>
+
+        <div class="body-grid__main">
+          <main><%- body %></main>
+        </div>
+      </div>
 
       <%- include('../partials/footer') %>
     </div>
