@@ -1,69 +1,130 @@
-# docs
+# Template Base
 
-## Build Setup
+The simple HTML template generator. :joy:
+
+## Table of contents
+
+- [Development](#development)
+- [Features](#features)
+  - [HTML](#html)
+  - [Pages](#pages)
+  - [Layouts](#layouts)
+  - [Partials](#partials)
+  - [Data](#data)
+  - [Modules](#modules)
+  - [SCSS](#scss)
+- [Release Notes](#release-notes)
+
+---
+
+## Development
+
+### Watch
 
 ```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
+npm run dev
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+watch files changes and live reload with browserSync
 
-## Special Directories
+### Build
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+```bash
+npm run build
+```
 
-### `assets`
+build compiled files to client
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+---
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+## Features
 
-### `components`
+### HTML
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+[https://ejs.co/]
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+- use `ejs template` to compile to html file
+  - usually use the following tags
+  - `<%-` to output component
+  - `<%` 'Scriptlet' tag, for control-flow, no output
+  - `<%=` Outputs the value into the template (HTML escaped)
+  - `<%#` Comment tag, no execution, no output
 
-### `layouts`
+### Pages
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+- All pages will store here and to be compiled to HTML file which is same name with the .ejs filename.
+- There are already build three pages for initial project which are `index.ejs` (for index all pages), `components.ejs` (for all component demo and doc), `components-table.ejs` (for all table components, because of a lot of tables templates will be created in past projects)
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+### Layouts
 
+- All layouts will store here and usually only one layout we will use here.
+- `default.ejs` will templated the base html structure, you can add any external script link here or other function you want.
 
-### `pages`
+### Partials
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+- All partial will store here such as header footer or modals.
+- `head.ejs` will store all meta tag, script tag, link tag and so on.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+### Data
 
-### `plugins`
+- `data/{filename}.json` will store all json data to reduce redundant code.
+  #### Format
+  `<%- data.{filename}.{key} %>`
 
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
+### Modules
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
+- Preinstalled Bootstrap(JS), GSAP, Hammer, jQuery, Swiper, VideoJS.
+- All installed modules will auto compile into the `bundle.min.js` file
+- Also, you can install new module you want.
+  1. Create a folder and named it with format `{module name}-v{version}`
+  2. Put the js and css inside the folder.
+  3. The modules will be compiled into `bundle.min.(css|js)` files.
 
-### `static`
+### SCSS
 
-This directory contains your static files. Each file inside this directory is mapped to `/`.
+- All scss stored into `src/assets/scss` folder.
+- `_variables.scss` can override Bootstrap variable to have customized style.
+- `pages/{page}.scss` includes all specified pages style.
+- `components/{component name}.scss` includes all components style.
+- `main.scss` global style.
+- `print.scss` print version style.
+- `page-transition.scss` add page transition style here.
 
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
+---
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
+## Release Notes
 
-### `store`
+### v2.3 `latest`
 
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
+- add swiper i18n message for wcag
+- fix app.js import twice
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+---
+
+### v2.2
+
+- installed `gulp-html-beautify` to format the HTML files
+
+---
+
+### v2.1
+
+- remove bootstrap bundle css
+- add bootstrap via npm, and added into `app.scss` for compiler
+- remove redundant files such as `_bootstrap-override.scss`, `_colors.scss`, `_icons.scss` and `_page.scss`
+- move style `buttons`, `footer`, `header` and `modals` into `scss/components` folder
+
+---
+
+### v2.0
+
+- use gulp build website
+- use babel to compile es6 to es5
+- use postcss autoprefixer in css
+- use sass to compile scss to css
+- use ejs to compile .ejs to .html
+- allow data.json to store large data
+
+---
+
+release v1.0
