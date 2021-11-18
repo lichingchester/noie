@@ -20,9 +20,9 @@
       <template #title> Downloads </template>
 
       download the latest version zip file on
-      <link href="https://github.com/lichingchester/noie/releases" target="_blank">
+      <a href="https://github.com/lichingchester/noie/releases" target="_blank">
         github
-      </link>
+      </a>
     </page-section>
   </div>
 </template>
